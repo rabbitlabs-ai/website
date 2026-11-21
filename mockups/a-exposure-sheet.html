@@ -1,0 +1,283 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rabbit Labs · Draw the keys. We draw the in-betweens.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Direction A: the exposure sheet. The page borrows the animator's own paperwork: ruled frame rows,
+   circled keys in red pencil, holds drawn as lines. One accent colour, no shadows, no rounded corners. */
+:root{
+  --paper:#fbfbf9; --ink:#111214; --soft:#5b5e64; --pencil:#8b9099;
+  --rule:#e2e4e8; --rule-mid:#c9ccd2; --red:#c4372b; --hi:#f0f1f4;
+  --sans:"Archivo",system-ui,sans-serif; --mono:"IBM Plex Mono",ui-monospace,monospace;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.55 var(--sans);font-variation-settings:"wdth" 100;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+.mono{font-family:var(--mono);font-size:12px;letter-spacing:.04em;text-transform:uppercase}
+.wrap{width:min(1180px,100% - 32px);margin-inline:auto}
+
+/* Header: the title block of a sheet */
+.head{position:sticky;top:0;z-index:5;background:var(--paper);border-bottom:1px solid var(--ink)}
+.head .wrap{display:grid;grid-template-columns:1.6fr repeat(4,1fr) 1.2fr;border-inline:1px solid var(--ink)}
+.cell{padding:8px 12px 10px;border-left:1px solid var(--rule-mid);text-decoration:none;display:block;min-width:0}
+.cell:first-child{border-left:0}
+.cell small{display:block;font:500 10px var(--mono);letter-spacing:.08em;color:var(--pencil);text-transform:uppercase}
+.cell span{font-weight:500;white-space:nowrap}
+a.cell:hover span{color:var(--red)}
+.brand span{display:flex;align-items:center;gap:8px;font-weight:700;font-variation-settings:"wdth" 112}
+.logo{width:16px;height:24px;flex:none}
+.cell.book{background:var(--ink);color:var(--paper)}
+.cell.book small{color:#9ea3ab}
+.cell.book:hover span{color:var(--paper);text-decoration:underline}
+
+/* Hero */
+.hero{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:56px;align-items:start;padding:72px 0 64px}
+.kicker{color:var(--soft);margin:0 0 28px}
+h1{font-weight:640;font-variation-settings:"wdth" 88;font-size:clamp(44px,6.6vw,86px);line-height:.96;letter-spacing:-.02em;margin:0}
+h1 .pencil{color:var(--pencil);font-weight:420}
+.lede{font-size:19px;max-width:46ch;color:var(--soft);margin:28px 0 32px}
+.ctas{display:flex;flex-wrap:wrap;gap:12px 24px;align-items:center}
+.btn{display:inline-block;background:var(--ink);color:var(--paper);text-decoration:none;font-weight:600;padding:13px 20px;border:1px solid var(--ink)}
+.btn:hover{background:var(--red);border-color:var(--red)}
+.btn.ghost{background:none;color:var(--ink)}
+.btn.ghost:hover{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.tlink{font-weight:500;text-underline-offset:4px}
+
+/* Demo: drawing on the left, the exposure-sheet column on the right */
+.demo{margin:0;display:grid;grid-template-columns:400px 112px;border:1px solid var(--ink);background:#fff}
+.stage{position:relative;border-right:1px solid var(--ink);display:flex;flex-direction:column}
+.stage svg{display:block;width:100%;height:auto;aspect-ratio:330/285;color:var(--ink);margin-top:30px}
+.stage .rl{fill:none;stroke:currentColor;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+.stage .rt{stroke-width:2}
+.stage .rh{fill:#fff}
+.stage .rf{fill:currentColor}
+.stage.ib svg{color:#4b5059}
+.tag{position:absolute;top:10px;left:12px;right:12px;display:flex;justify-content:space-between;color:var(--soft)}
+.tag b{font-weight:500;color:var(--ink)}
+.stage.ib .tag b{color:var(--pencil)}
+.controls{margin-top:auto;display:flex;border-top:1px solid var(--rule-mid)}
+.controls button{flex:1;appearance:none;background:none;border:0;border-left:1px solid var(--rule-mid);padding:10px;cursor:pointer;color:var(--ink);font:500 11px var(--mono);letter-spacing:.06em;text-transform:uppercase}
+.controls button:first-child{border-left:0}
+.controls button:hover,.controls button[aria-pressed=true]{background:var(--hi)}
+.xs{font-family:var(--mono);font-size:11px}
+.xs-head{display:grid;grid-template-columns:34px 1fr;border-bottom:1px solid var(--ink);color:var(--pencil);font-size:10px;letter-spacing:.08em}
+.xs-head span{padding:6px 0 5px;text-align:center}
+.xs-head span+span{border-left:1px solid var(--rule-mid)}
+.xs ol{list-style:none;margin:0;padding:0}
+.xs li{display:grid;grid-template-columns:34px 1fr;height:13.5px;line-height:13.5px;border-bottom:1px solid var(--rule);cursor:pointer}
+.xs li:nth-child(6n){border-bottom-color:var(--rule-mid)}
+.xs li .f{text-align:center;color:var(--pencil);font-size:9px;border-right:1px solid var(--rule-mid)}
+.xs li .d{position:relative;text-align:center}
+.xs li.ib .d{color:var(--pencil)}
+.xs li.key .d b{display:inline-block;min-width:17px;height:17px;line-height:15px;margin-top:-2px;border:1.5px solid var(--red);border-radius:50%;color:var(--red);font-weight:500;background:#fff;position:relative;z-index:1}
+.xs li.hold .d::after{content:"";position:absolute;left:50%;top:0;bottom:0;border-left:1px solid var(--ink)}
+.xs li.hold.ibh .d::after{border-left-color:var(--pencil)}
+.xs li.on{background:#fbeeb8}
+.cap{grid-column:1/-1;margin:0;padding:10px 12px;border-top:1px solid var(--ink);font-size:13px;color:var(--soft);display:flex;gap:18px;flex-wrap:wrap}
+.cap i{font-style:normal;display:inline-flex;align-items:center;gap:6px}
+.cap .o{display:inline-block;width:13px;height:13px;border:1.5px solid var(--red);border-radius:50%}
+.cap .g{display:inline-block;width:13px;border-top:2px solid var(--pencil)}
+
+/* Sections: a ruled label column on the left, content on the right */
+.sec{display:grid;grid-template-columns:200px minmax(0,1fr);gap:40px;padding:56px 0 64px;border-top:1px solid var(--ink)}
+.sec>.mono{color:var(--soft);padding-top:6px}
+.sec>.mono b{display:block;color:var(--ink);font-weight:500;font-size:13px;margin-bottom:4px}
+h2{font-weight:620;font-variation-settings:"wdth" 92;font-size:clamp(30px,3.6vw,44px);line-height:1.04;letter-spacing:-.015em;margin:0 0 28px;max-width:22ch}
+.big{font-size:clamp(22px,2.4vw,30px);line-height:1.3;max-width:34ch;margin:0 0 40px;font-weight:450}
+.big em{font-style:normal;color:var(--red)}
+.figs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid var(--rule-mid);margin:0}
+.figs div{padding:18px 20px 4px 0}
+.figs div+div{padding-left:20px;border-left:1px solid var(--rule)}
+.figs dt{font-weight:600;font-variation-settings:"wdth" 80;font-size:48px;line-height:1;letter-spacing:-.02em}
+.figs dd{margin:10px 0 0;color:var(--soft);max-width:28ch}
+.figs .src{color:var(--pencil);font-size:13px;margin-top:20px}
+
+table{width:100%;border-collapse:collapse}
+th{text-align:left;font:500 10px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--pencil);padding:0 16px 8px 0;border-bottom:1px solid var(--ink)}
+td{vertical-align:top;padding:18px 16px 20px 0;border-bottom:1px solid var(--rule-mid)}
+td:first-child{width:24%;font-weight:600;font-size:19px}
+td:first-child .mono{display:block;color:var(--red);font-size:11px;margin-bottom:4px}
+td:nth-child(2){color:var(--soft);width:42%}
+td:last-child{font-weight:500}
+.after{margin:22px 0 0;color:var(--soft);max-width:70ch}
+.after b{color:var(--ink);font-weight:600}
+
+.res .figs div{padding-bottom:18px}
+.people{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid var(--rule-mid)}
+.person{padding:20px 20px 8px 0}
+.person+.person{padding-left:20px;border-left:1px solid var(--rule)}
+.person img{width:72px;height:72px;object-fit:cover;border-radius:50%;filter:grayscale(1) contrast(1.05);display:block;margin-bottom:14px}
+.person h3{margin:0;font-size:19px;font-weight:600}
+.person .role{margin:2px 0 12px;color:var(--red)}
+.person ul{list-style:none;padding:0;margin:0;color:var(--soft);font-size:15px}
+.person li+li{margin-top:4px}
+
+.cta{border-top:1px solid var(--ink);padding:72px 0;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:32px;align-items:end}
+.cta h2{font-size:clamp(36px,5vw,64px);max-width:none;margin-bottom:12px}
+.cta p{margin:0;font-size:19px;color:var(--soft)}
+.foot{border-top:1px solid var(--ink);padding:14px 0 40px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;color:var(--soft)}
+
+@media (max-width:1040px){
+  .hero{grid-template-columns:minmax(0,1fr);gap:40px}
+  .head .wrap{grid-template-columns:1fr auto}
+  .head .cell.nav{display:none}
+}
+@media (max-width:720px){
+  .demo{grid-template-columns:minmax(0,1fr) 88px}
+  .xs li{grid-template-columns:24px 1fr}.xs-head{grid-template-columns:24px 1fr}
+  .sec{grid-template-columns:minmax(0,1fr);gap:16px;padding:40px 0 48px}
+  .figs,.people{grid-template-columns:minmax(0,1fr)}
+  .figs div+div,.person+.person{padding-left:0;border-left:0;border-top:1px solid var(--rule)}
+  td,th{display:block;width:auto!important;padding-right:0}
+  thead{display:none}
+  td{border-bottom:0;padding:4px 0}
+  tr{display:block;padding:14px 0;border-bottom:1px solid var(--rule-mid)}
+  .cta{grid-template-columns:minmax(0,1fr)}
+  .hero{padding:48px 0}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<header class="head">
+  <div class="wrap">
+    <a class="cell brand" href="#top"><small>Prod.</small><span><svg class="logo" viewBox="56 18 144 214" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"><path d="M82 214V52Q82 28 94 28T106 52V78"/><path d="M106 70 118 40Q124 28 132 36Q138 44 128 84"/><path d="M110 84C162 84 190 104 188 128C186 154 152 166 84 166"/><path d="M118 166 184 214"/></g><circle cx="152" cy="120" r="9" fill="currentColor"/></svg>Rabbit Labs</span></a>
+    <a class="cell nav" href="#why"><small>01</small><span>Why</span></a>
+    <a class="cell nav" href="#how"><small>02</small><span>How it works</span></a>
+    <a class="cell nav" href="#results"><small>03</small><span>Results</span></a>
+    <a class="cell nav" href="#team"><small>04</small><span>Team</span></a>
+    <a class="cell book" href="https://calendly.com/founders-rabbitlab/1-1-founders" target="_blank" rel="noopener"><small>Pilot</small><span>Book a call →</span></a>
+  </div>
+</header>
+
+<main id="top" class="wrap">
+  <section class="hero">
+    <div>
+      <p class="mono kicker">Sc. 001 — In-betweening for 2D animation</p>
+      <h1>Draw the keys.<br>We draw the <span class="pencil">in&#8209;betweens.</span></h1>
+      <p class="lede">Rabbit Labs drafts the drawings between your animators' keys, on their timing, as clean vector lines they can edit. They keep what works and retake the rest.</p>
+      <div class="ctas">
+        <a class="btn" href="https://calendly.com/founders-rabbitlab/1-1-founders" target="_blank" rel="noopener">Pilot it on your shot</a>
+        <a class="tlink" href="mailto:founders@rabbitlab.ai">founders@rabbitlab.ai</a>
+      </div>
+    </div>
+
+    <figure class="demo" aria-label="Two keys and the in-betweens between them, on an exposure sheet">
+      <div class="stage" id="stage">
+        <div class="tag mono"><span id="fr">Fr 01</span><b id="kind">Key · animator</b></div>
+        <svg id="rabbit" role="img" aria-label="Line drawing of a rabbit lowering its ears"></svg>
+        <div class="controls">
+          <button type="button" id="play" aria-pressed="true">Pause</button>
+          <button type="button" id="slow" aria-pressed="false">Slow</button>
+        </div>
+      </div>
+      <div class="xs" aria-hidden="true">
+        <div class="xs-head"><span>Fr</span><span>A</span></div>
+        <ol id="xs"></ol>
+      </div>
+      <figcaption class="cap"><i><span class="o"></span>Key, drawn by your animator</i><i><span class="g"></span>In-between, drafted by Rabbit Labs</i><i>Illustration, not model output</i></figcaption>
+    </figure>
+  </section>
+
+  <section class="sec" id="why">
+    <p class="mono"><b>01</b>Why</p>
+    <div>
+      <p class="big">Every second of 2D animation is 12 to 24 drawings. Animators draw the keys. Every drawing between them is still drawn by hand. <em>We give that time back.</em></p>
+      <dl class="figs">
+        <div><dt>1,875</dt><dd>artist-hours to draw one 22-minute TV episode</dd></div>
+        <div><dt>~½</dt><dd>of those hours go to the in-between drawings</dd></div>
+        <div><dt>0</dt><dd>pixels to redraw. AI video gives studios frames they can't edit, so we draw in vector.</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <section class="sec" id="how">
+    <p class="mono"><b>02</b>How it works</p>
+    <div>
+      <h2>Your keys and your timing go in. Editable lines come out.</h2>
+      <table>
+        <thead><tr><th>Step</th><th>What happens</th><th>What stays yours</th></tr></thead>
+        <tbody>
+          <tr><td><span class="mono">01</span>Import keys</td><td>Load your key drawings as vector line art (SVG or Grease Pencil), with your exposure sheet.</td><td>Your keys and your timing. Holds stay where you put them.</td></tr>
+          <tr><td><span class="mono">02</span>Generate</td><td>Our model matches each line between the keys and moves it along the motion, on the frames your sheet calls for.</td><td>Every line is vector, editable in your pipeline.</td></tr>
+          <tr><td><span class="mono">03</span>Review</td><td>Scrub with onion skin. Accept drawing by drawing, retake a single line, or fix it by hand and lock it.</td><td>The final say. Locked drawings are never touched.</td></tr>
+        </tbody>
+      </table>
+      <p class="after"><b>Runs on your own machines.</b> Your art never leaves the building, and it is never used for training without your permission.</p>
+    </div>
+  </section>
+
+  <section class="sec res" id="results">
+    <p class="mono"><b>03</b>Results</p>
+    <div>
+      <h2>Measured, not promised.</h2>
+      <dl class="figs">
+        <div><dt>82%</dt><dd>of drafts pass our automatic check on 3D-rendered characters the model has never seen (252 of 306).</dd></div>
+        <div><dt>&lt;1&nbsp;s</dt><dd>per in-between, on a laptop.</dd></div>
+        <div><dt>100%</dt><dd>vector. Every line stays editable.</dd></div>
+      </dl>
+      <p class="after">Loose hand-drawn pencil is harder. That is where we are improving fastest.</p>
+    </div>
+  </section>
+
+  <section class="sec" id="team">
+    <p class="mono"><b>04</b>Team</p>
+    <div class="people">
+      <article class="person"><img src="../rabbitlab-site/assets/rithwick.webp" alt="Rithwick Sethi"><h3>Rithwick Sethi</h3><p class="role mono">Co-founder · CEO</p><ul><li>MS AI Engineering at CMU</li><li>Built AI and automation tooling at Apple</li><li>Published 7 research papers</li></ul></article>
+      <article class="person"><img src="../rabbitlab-site/assets/om.webp" alt="Om Kulkarni"><h3>Om Kulkarni</h3><p class="role mono">Co-founder · CTO</p><ul><li>MS ECE and ETIM at CMU</li><li>Worked on AI workloads at Arm</li><li>Built data pipelines at Wells Fargo</li></ul></article>
+      <article class="person"><img src="../rabbitlab-site/assets/hasita.webp" alt="Hasita Bommakanti"><h3>Hasita Bommakanti</h3><p class="role mono">Co-founder · COO</p><ul><li>MS ECE and ETIM at CMU</li><li>Built AI systems at Apple</li><li>Leads studio outreach</li></ul></article>
+    </div>
+  </section>
+
+  <section class="cta">
+    <div>
+      <h2>Try it on one of your shots.</h2>
+      <p>Send two keys and a timing chart. We'll send back editable in-betweens.</p>
+    </div>
+    <div class="ctas">
+      <a class="btn" href="https://calendly.com/founders-rabbitlab/1-1-founders" target="_blank" rel="noopener">Book a call</a>
+      <a class="btn ghost" href="mailto:founders@rabbitlab.ai?subject=Pilot">Email us</a>
+    </div>
+  </section>
+</main>
+
+<footer class="wrap foot mono"><span>© 2026 Rabbit Labs · Pittsburgh, PA · <a href="mailto:founders@rabbitlab.ai">founders@rabbitlab.ai</a></span><span>Sheet 1 / 1</span></footer>
+
+<script src="shared/rabbit.js"></script>
+<script>
+// Fills the exposure-sheet column from the shot (one row per frame), then plays the drawing and marks the row.
+(() => {
+  const { drawings, frames, render, player, VIEWBOX } = window.Rabbit;
+  const svg = document.getElementById("rabbit"), xs = document.getElementById("xs");
+  const stage = document.getElementById("stage"), frEl = document.getElementById("fr"), kind = document.getElementById("kind");
+  svg.setAttribute("viewBox", VIEWBOX);
+  xs.innerHTML = frames.map((di, k) => {
+    const d = drawings[di], first = k === 0 || frames[k - 1] !== di;
+    const cls = [d.key ? "key" : "ib", first ? "" : "hold", !first && !d.key ? "ibh" : ""].join(" ");
+    return `<li class="${cls}" data-k="${k}"><span class="f">${k + 1}</span><span class="d">${first ? (d.key ? `<b>${d.n}</b>` : d.n) : ""}</span></li>`;
+  }).join("");
+  const rows = [...xs.children];
+  let last = -1;
+  const p = player((fr, di, d) => {
+    if (di !== last) { svg.innerHTML = render(d.p); last = di; }
+    stage.classList.toggle("ib", !d.key);
+    frEl.textContent = "Fr " + String(fr + 1).padStart(2, "0");
+    kind.textContent = d.key ? `Key ${d.n} · animator` : `In-between ${d.n} · Rabbit Labs`;
+    rows.forEach((r, k) => r.classList.toggle("on", k === fr));
+  });
+  const btn = document.getElementById("play"), slow = document.getElementById("slow");
+  const sync = () => { btn.textContent = p.playing ? "Pause" : "Play"; btn.setAttribute("aria-pressed", String(p.playing)); };
+  btn.onclick = () => { p.toggle(); sync(); };
+  slow.onclick = () => { const on = slow.getAttribute("aria-pressed") !== "true"; slow.setAttribute("aria-pressed", String(on)); p.setSlow(on); if (p.playing) { p.pause(); p.play(); } };
+  xs.onclick = (e) => { const li = e.target.closest("li"); if (li) { p.pause(); sync(); p.seek(+li.dataset.k); } };
+  sync();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rabbit Labs · Give animators their time back</title>
+<meta name="description" content="Rabbit Labs draws the in-betweens from your animators' keys and timing, as clean vector lines they can edit, keep or retake.">
+<link rel="icon" href="shared/logo.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400..900&family=DM+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="shared/navy.css">
+<style>
+
+.track{height:56px;border-top:1px solid color-mix(in srgb,var(--sky) 40%,transparent)}
+.track svg{display:block;width:100%;height:56px;overflow:visible}
+.track .rb *{stroke-width:6}
+.track .ib .rb *{stroke-width:6.5}
+.hero{padding-top:150px}
+.still{border-top:1px solid var(--sky);padding:72px 0 56px}
+.still .lead{font-weight:700;font-size:clamp(28px,3.8vw,56px);letter-spacing:-.03em;line-height:1.04;margin:0 0 8px}
+.still .lead b{color:var(--deep)}
+.stage{display:block;width:100%;height:auto}
+</style>
+</head>
+<body>
+<header class="head">
+  <div class="wrap bar">
+    <a class="brand" href="#top"><img src="shared/logo.svg" alt="Rabbit Labs" width="136" height="24"></a>
+    <nav aria-label="Main">
+      <a class="nav" href="#how">How it works</a><a class="nav" href="#results">Results</a><a class="nav" href="#team">Team</a>
+      <a class="book" href="https://calendly.com/founders-rabbitlab/1-1-founders" target="_blank" rel="noopener">Book a call</a>
+    </nav>
+  </div>
+  <div class="track wrap" aria-hidden="true"><svg id="track"></svg></div>
+</header>
+
+<main id="top">
+  <section class="wrap hero">
+    <p class="mono">Rabbit Labs — in-betweening for 2D animation</p>
+    <h1>Give animators<br><span class="scrib">their time back.<svg viewBox="0 0 600 24" preserveAspectRatio="none" aria-hidden="true"><path d="M4 13C70 7 150 17 230 11S390 6 470 12 570 15 596 9"/><path d="M26 19C130 13 270 21 410 16S548 14 588 17"/></svg></span></h1>
+    <div class="hero-foot">
+      <p><b>Your animators draw the keys. We draw the in&#8209;betweens</b>, on their timing, as clean vector lines they can edit, keep or retake.</p>
+      <div class="ctas"><a class="btn" href="https://calendly.com/founders-rabbitlab/1-1-founders" target="_blank" rel="noopener">Pilot it on your shot</a><a class="tlink" href="mailto:founders@rabbitlab.ai">founders@rabbitlab.ai</a></div>
+    </div>
+  </section>
+
+  <section class="wrap still">
+    <p class="lead">Animators draw the keys. <b>We draw everything in between.</b></p>
+      <svg class="stage" viewBox="0 0 1200 450" role="img" aria-label="A rabbit's hop: two keys and a breakdown by the animator, two in-betweens by Rabbit Labs">
+        <defs><clipPath id="reveal"><rect id="reveal-r" x="0" y="0" width="1200" height="450"/></clipPath></defs>
+        <path class="arc" d="M110 300 Q600 -90 1090 300" clip-path="url(#reveal)"/>
+        <g id="dw"></g>
+        <g id="chart"></g>
+      </svg>
+  </section>
+
+
+  <section class="wrap card">
+    <p class="mono">Why</p>
+    <p class="say">One second of animation is up to 24 drawings. <span>Almost every one is still drawn by hand.</span></p>
+  </section>
+
+  <section class="wrap card">
+    <div class="rows">
+      <div class="row"><b>1,875</b><p><strong>artist-hours</strong> to draw one 22-minute TV episode.</p></div>
+      <div class="row"><b>~½</b><p>of those hours go to the <strong>in-betweens</strong>, the drawings between the keys.</p></div>
+      <div class="row"><b>4 for 3</b><p>Our base case: give each animator 10 hours a week back and the same team makes <strong>four episodes in the time of three</strong>.</p></div>
+    </div>
+  </section>
+
+  <section class="wrap card" id="how">
+    <p class="mono">How it works</p>
+    <div class="cols">
+      <div><p class="mono">01</p><h3>Drop in keys</h3><p>Your key drawings as vector line art (SVG or Grease Pencil), with your exposure sheet. Holds and timing stay yours.</p></div>
+      <div><p class="mono">02</p><h3>Generate</h3><p>Our model matches each line between the keys and moves it along the motion, on the frames your timing calls for.</p></div>
+      <div><p class="mono">03</p><h3>Fix</h3><p>Point at a wrong line and pick a retake. Only that line is redrawn. Lock anything you've fixed by hand.</p></div>
+    </div>
+  </section>
+
+  <section class="wrap card">
+    <p class="mono">What stays yours</p>
+    <p class="say">Your timing. <span>Your lines.</span> Your building.</p>
+    <p class="small">We draw on the frames your sheet asks for. Output is vector, so nobody redraws a frame for a note. The model runs on your own machines, and your art is never used for training without your permission.</p>
+  </section>
+
+  <section class="wrap card" id="results">
+    <p class="mono">Measured, not promised</p>
+    <div class="rows">
+      <div class="row"><b>82%</b><p>of drafts pass our automatic check on <strong>3D-rendered characters the model has never seen</strong> (252 of 306).</p></div>
+      <div class="row"><b>&lt;1s</b><p>per in-between, <strong>on a laptop</strong>.</p></div>
+    </div>
+    <p class="small">Loose hand-drawn pencil is harder, and that's where we're improving fastest.</p>
+  </section>
+
+  <section class="wrap card" id="team">
+    <p class="mono">Team</p>
+    <div class="team">
+      <article><img src="../rabbitlab-site/assets/rithwick.webp" alt="Rithwick Sethi"><h3>Rithwick Sethi</h3><p class="role">Co-founder, CEO</p><ul><li>MS AI Engineering at CMU</li><li>Built AI and automation tooling at Apple</li><li>Published 7 research papers</li></ul></article>
+      <article><img src="../rabbitlab-site/assets/om.webp" alt="Om Kulkarni"><h3>Om Kulkarni</h3><p class="role">Co-founder, CTO</p><ul><li>MS ECE and ETIM at CMU</li><li>Worked on AI workloads at Arm</li><li>Built data pipelines at Wells Fargo</li></ul></article>
+      <article><img src="../rabbitlab-site/assets/hasita.webp" alt="Hasita Bommakanti"><h3>Hasita Bommakanti</h3><p class="role">Co-founder, COO</p><ul><li>MS ECE and ETIM at CMU</li><li>Built AI systems at Apple</li><li>Leads studio outreach</li></ul></article>
+    </div>
+  </section>
+
+  <section class="end">
+    <div class="wrap">
+      <p class="mono">Try it on one of your shots</p>
+      <a class="giant" href="mailto:founders@rabbitlab.ai?subject=Pilot">Send us two keys&nbsp;→</a>
+      <p>and a timing chart. We'll send back editable in-betweens.</p>
+      <div class="ctas"><a class="btn" href="https://calendly.com/founders-rabbitlab/1-1-founders" target="_blank" rel="noopener">Book a call</a><a class="tlink" href="mailto:founders@rabbitlab.ai">founders@rabbitlab.ai</a></div>
+    </div>
+  </section>
+</main>
+
+<footer class="wrap foot mono"><span>© 2026 Rabbit Labs · an animator's best friend · Pittsburgh, PA</span><a href="mailto:founders@rabbitlab.ai">founders@rabbitlab.ai</a></footer>
+
+<script src="shared/hop.js"></script>
+<script>
+// Still hop under the hero, plus a tiny rabbit in the header that hops along the timing chart as the page scrolls.
+// Its drawing steps through the five drawings; its height follows the arc of the hop.
+(() => {
+  const { drawings, render, chart } = window.Hop;
+  document.getElementById("dw").innerHTML = drawings.map((d) => `<g class="d ${d.kind}" transform="translate(${d.x} ${d.y})">${render(d.p)}</g>`).join("");
+  document.getElementById("chart").innerHTML = chart(405);
+
+  const svg = document.getElementById("track");
+  let W = 0;
+  const layout = () => {
+    W = svg.clientWidth;
+    svg.setAttribute("viewBox", `0 0 ${W} 56`);
+    const xs = drawings.map((d, i) => 14 + (W - 28) * i / 4);
+    svg.innerHTML = `<line class="tline" x1="0" y1="46" x2="${W}" y2="46"/>` +
+      xs.map((x, i) => { const k = drawings[i].kind;
+        return k === "key" ? `<g class="mk"><circle cx="${x}" cy="46" r="3.5"/><line x1="${x}" y1="40" x2="${x}" y2="52"/></g>`
+          : k === "bd" ? `<g class="mk"><path d="M${x - 4} 50L${x} 42L${x + 4} 50Z"/></g>`
+          : `<g class="mk ib"><line x1="${x}" y1="41" x2="${x}" y2="51"/></g>`; }).join("") +
+      `<g id="mini"></g>`;
+    onScroll(true);
+  };
+  let cur = -1;
+  const onScroll = (force) => {
+    const max = document.documentElement.scrollHeight - innerHeight;
+    const p = max > 0 ? Math.max(0, Math.min(1, scrollY / max)) : 0;
+    const k = Math.round(p * 4), d = drawings[k];
+    const x = 14 + (W - 28) * p, lift = 22 * 4 * p * (1 - p);
+    const mini = document.getElementById("mini");
+    if (k !== cur || force === true) { mini.innerHTML = `<g class="${d.kind}">${render(d.p)}</g>`; cur = k; }
+    mini.setAttribute("transform", `translate(${x.toFixed(1)} ${(26 - lift).toFixed(1)}) scale(0.32)`);
+  };
+  addEventListener("resize", layout);
+  addEventListener("scroll", onScroll, { passive: true });
+  layout();
+})();
+</script>
+</body>
+</html>

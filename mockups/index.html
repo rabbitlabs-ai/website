@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>rabbitlab.ai directions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400..800&family=DM+Mono:wght@400&display=swap">
+<style>
+/* Comparison page for the three directions. Each preview is the real page in a scaled iframe. */
+:root{--ink:#111;--soft:#666;--line:#e4e4e4;--bg:#fafafa}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 "Schibsted Grotesk",system-ui,sans-serif}
+a{color:inherit}
+.wrap{width:min(1240px,100% - 32px);margin-inline:auto}
+header{padding:48px 0 24px;border-bottom:1px solid var(--ink)}
+h1{font-size:clamp(30px,4vw,44px);letter-spacing:-.02em;margin:0 0 10px;line-height:1.05}
+header p{margin:0;color:var(--soft);max-width:70ch}
+.mono{font:400 12px "DM Mono",monospace;color:var(--soft)}
+.opts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px;padding:32px 0}
+.opt{display:flex;flex-direction:column;min-width:0}
+.frame{position:relative;aspect-ratio:1440/1000;overflow:hidden;border:1px solid var(--line);background:#fff}
+.frame iframe{position:absolute;top:0;left:0;width:1440px;height:1000px;border:0;transform-origin:0 0;pointer-events:none}
+.frame a{position:absolute;inset:0}
+.opt h2{font-size:24px;letter-spacing:-.015em;margin:18px 0 4px}
+.opt .idea{margin:0 0 12px}
+.opt dl{margin:0;display:grid;grid-template-columns:84px minmax(0,1fr);gap:6px 10px;font-size:14px;border-top:1px solid var(--line);padding-top:12px}
+.opt dt{color:var(--soft)}
+.opt dd{margin:0}
+.sw{display:inline-block;width:12px;height:12px;border:1px solid rgba(0,0,0,.15);vertical-align:-1px;margin-right:2px}
+.open{margin-top:14px;font-weight:600}
+section.notes{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:40px;border-top:1px solid var(--ink);padding:28px 0 64px}
+.notes h3{margin:0 0 10px;font-size:18px}
+.notes ul{margin:0;padding-left:18px;color:#333}
+.notes li+li{margin-top:6px}
+.rec{background:#fff;border:1px solid var(--line);padding:18px 20px;margin:0 0 28px}
+.rec b{font-weight:650}
+@media (max-width:900px){.opts,section.notes{grid-template-columns:minmax(0,1fr)}}
+</style>
+</head>
+<body>
+<header class="wrap">
+  <p class="mono">Rabbit Labs · website directions · 4 Nov 2026</p>
+  <h1>Three directions for rabbitlab.ai</h1>
+  <p style="margin:0 0 14px"><b>Rabbit hop options (5 Nov), all on C in the deck's navy, with the deck's 5-drawing hop:</b>
+    <a href="hop-a-across.html">A · hops across</a> ·
+    <a href="hop-b-draw.html">B · we draw the in-betweens</a> ·
+    <a href="hop-c-flip.html">C · flipbook</a> ·
+    <a href="hop-d-progress.html">D · hop as the scroll bar</a></p>
+  <p style="margin:0 0 14px"><b>Chosen 5 Nov: C, in the VC deck's Corporate Navy colours → <a href="c-title-cards.html">open c-title-cards.html</a>.</b> The demo waits on real model output. (The B+C mix, <a href="d-mix.html">d-mix.html</a>, was tried and dropped.)</p>
+  <p>Same copy and sections in all three. Each takes its look from the animator's own tools (the exposure sheet, the lightbox, the title card) instead of a generic startup template. Click a preview to open the full page.</p>
+</header>
+
+<main class="wrap">
+  <div class="opts">
+    <article class="opt">
+      <div class="frame"><iframe src="a-exposure-sheet.html" title="Direction A preview" tabindex="-1" loading="lazy"></iframe><a href="a-exposure-sheet.html" aria-label="Open direction A"></a></div>
+      <h2>A · Exposure sheet</h2>
+      <p class="idea">The page is built from the animator's paperwork: a title-block header, ruled frame rows, keys circled in red pencil, holds drawn as lines. The demo plays next to a real exposure-sheet column.</p>
+      <dl>
+        <dt>Says</dt><dd>"We know how your studio actually works."</dd>
+        <dt>Type</dt><dd>Archivo (narrow cuts) + IBM Plex Mono</dd>
+        <dt>Colour</dt><dd><span class="sw" style="background:#fbfbf9"></span><span class="sw" style="background:#111214"></span><span class="sw" style="background:#8b9099"></span><span class="sw" style="background:#c4372b"></span> paper, ink, pencil, one red</dd>
+        <dt>Risk</dt><dd>The most detailed of the three. Investors who've never seen an exposure sheet get less out of it.</dd>
+      </dl>
+      <a class="open" href="a-exposure-sheet.html">Open A →</a>
+    </article>
+
+    <article class="opt">
+      <div class="frame"><iframe src="b-lightbox.html" title="Direction B preview" tabindex="-1" loading="lazy"></iframe><a href="b-lightbox.html" aria-label="Open direction B"></a></div>
+      <h2>B · Lightbox</h2>
+      <p class="idea">Animation paper on a lightbox, with peg holes on every sheet. The colours explain the product: graphite is what your animator draws, blue is what we draft, red is a retake. "Accept drafts" turns the blue to graphite.</p>
+      <dl>
+        <dt>Says</dt><dd>"Artist first. We draft, you decide."</dd>
+        <dt>Type</dt><dd>Newsreader (serif) + Hanken Grotesk</dd>
+        <dt>Colour</dt><dd><span class="sw" style="background:#f4f4f1"></span><span class="sw" style="background:#1e1f22"></span><span class="sw" style="background:#4a8ad4"></span><span class="sw" style="background:#d0453a"></span> desk, graphite, non-photo blue, retake red</dd>
+        <dt>Risk</dt><dd>A serif on soft paper can drift toward a design-agency look if more colour or ornament creeps in.</dd>
+      </dl>
+      <a class="open" href="b-lightbox.html">Open B →</a>
+    </article>
+
+    <article class="opt">
+      <div class="frame"><iframe src="c-title-cards.html" title="Direction C preview" tabindex="-1" loading="lazy"></iframe><a href="c-title-cards.html" aria-label="Open direction C"></a></div>
+      <h2>C · Title cards</h2>
+      <p class="idea">Black and white, very large type, and a timecode that runs as you scroll. It opens on the mission ("Give animators their time back."), then you scroll through one shot drawing by drawing.</p>
+      <dl>
+        <dt>Says</dt><dd>"This is why we exist." The mission comes before the product.</dd>
+        <dt>Type</dt><dd>Schibsted Grotesk + DM Mono</dd>
+        <dt>Colour</dt><dd><span class="sw" style="background:#fff"></span><span class="sw" style="background:#0b0b0c"></span><span class="sw" style="background:#a3a4a8"></span> white, ink, grey for in-betweens</dd>
+        <dt>Risk</dt><dd>Giant black type is the closest of the three to a common startup look. The scroll-through section needs testing on real phones.</dd>
+      </dl>
+      <a class="open" href="c-title-cards.html">Open C →</a>
+    </article>
+  </div>
+
+  <div class="rec"><b>My pick: B, with A's exposure-sheet demo as the option to borrow.</b> Its colour coding (graphite for your keys, blue for our drafts) explains the product before anyone reads a word, and "without taking the pencil out of the animator's hand" is the motive in one line. C is the strongest for investors. A is the most original, but it asks the most of a visitor.</div>
+
+  <section class="notes">
+    <div>
+      <h3>Rules all three follow</h3>
+      <ul>
+        <li>No gradients, glass, glows, pill badges, emoji or icon-in-a-rounded-square grids.</li>
+        <li>No Inter and no purple. Each direction pairs a distinctive face with a mono or grotesk and uses at most one accent colour.</li>
+        <li>The look comes from real animation tools: exposure sheets, peg holes, keys and holds, onion skin, timecode.</li>
+        <li>The demo is real vector drawing: 2 keys and 10 in-betweens computed on the animator's timing (slow in and slow out, ears trailing the head). It's labelled as an illustration, not model output.</li>
+        <li>Claims stay honest: every number gives its n and says what "pass" means.</li>
+      </ul>
+    </div>
+    <div>
+      <h3>Changes from the live site, to confirm</h3>
+      <ul>
+        <li><b>Boxing drawings removed.</b> The live site's demo is the Blender Studio boxing shot, which the fact sheet says never to use in demos. A vector rabbit replaces it. Swap in real model output once we have a hand-drawn shot we're proud of.</li>
+        <li><b>Results:</b> the live site says "~2.4 px average error". These pages use 82% (252 of 306, 3D-rendered, automatic check) to match the YC application. Choose one.</li>
+        <li><b>C adds "4 episodes in the time of 3"</b>, the YC application's base case. It's a projection and is labelled as one.</li>
+        <li><b>Logo</b> is a hand redraw of the Canva "R" rabbit. Export the real SVG from Canva before shipping.</li>
+        <li>Founder photos load from <span class="mono">../rabbitlab-site/assets/</span>. Nothing has been changed in that repo.</li>
+      </ul>
+    </div>
+  </section>
+</main>
+<script>
+// Scales each 1440px-wide page down to its preview box.
+const fit = () => document.querySelectorAll(".frame").forEach((f) => { f.querySelector("iframe").style.transform = `scale(${f.clientWidth / 1440})`; });
+addEventListener("resize", fit); fit();
+</script>
+</body>
+</html>

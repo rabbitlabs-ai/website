@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rabbit Labs · Give animators their time back</title>
+<meta name="description" content="Rabbit Labs draws the in-betweens from your animators' keys and timing, as clean vector lines they can edit, keep or retake.">
+<link rel="icon" href="shared/logo.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400..900&family=DM+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="shared/navy.css">
+<style>
+.piece{position:relative;border-top:1px solid var(--sky)}
+.piece .sticky{position:sticky;top:0;height:100svh;display:flex;flex-direction:column;justify-content:center;padding-top:58px}
+.lead{font-weight:700;font-size:clamp(28px,3.8vw,56px);letter-spacing:-.03em;line-height:1.04;margin:0 0 8px}
+.lead b{color:var(--deep);font-weight:700;transition:opacity .3s}
+.stage{display:block;width:100%;height:auto;max-height:64svh}
+.cap{display:flex;gap:18px;align-items:baseline;flex-wrap:wrap;margin-top:6px;min-height:40px}
+.cap .mono{color:var(--deep)}
+.cap p{margin:0;font-size:clamp(18px,1.8vw,24px);font-weight:600}
+.hint{color:var(--deep);margin-top:6px}
+.hopA{height:340vh}
+.d{opacity:0;transition:opacity .25s}
+.d.past{opacity:.18}
+.d.now{opacity:1}
+.stage.done .d{opacity:1}
+.mk{opacity:.3;transition:opacity .25s}
+.mk.on{opacity:1}
+</style>
+</head>
+<body>
+<header class="head">
+  <div class="wrap bar">
+    <a class="brand" href="#top"><img src="shared/logo.svg" alt="Rabbit Labs" width="136" height="24"></a>
+    <nav aria-label="Main">
+      <a class="nav" href="#how">How it works</a><a class="nav" href="#results">Results</a><a class="nav" href="#team">Team</a>
+      <a class="book" href="https://calendly.com/founders-rabbitlab/1-1-founders" target="_blank" rel="noopener">Book a call</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="wrap hero">
+    <p class="mono">Rabbit Labs — in-betweening for 2D animation</p>
+    <h1>Give animators<br><span class="scrib">their time back.<svg viewBox="0 0 600 24" preserveAspectRatio="none" aria-hidden="true"><path d="M4 13C70 7 150 17 230 11S390 6 470 12 570 15 596 9"/><path d="M26 19C130 13 270 21 410 16S548 14 588 17"/></svg></span></h1>
+    <div class="hero-foot">
+      <p><b>Your animators draw the keys. We draw the in&#8209;betweens</b>, on their timing, as clean vector lines they can edit, keep or retake.</p>
+      <div class="ctas"><a class="btn" href="https://calendly.com/founders-rabbitlab/1-1-founders" target="_blank" rel="noopener">Pilot it on your shot</a><a class="tlink" href="mailto:founders@rabbitlab.ai">founders@rabbitlab.ai</a></div>
+    </div>
+  </section>
+
+  <section class="piece hopA" id="piece">
+    <div class="wrap sticky">
+      <p class="lead">Animators draw the keys. <b id="lead-b">We draw everything in between.</b></p>
+      <svg class="stage" viewBox="0 0 1200 450" role="img" aria-label="A rabbit's hop: two keys and a breakdown by the animator, two in-betweens by Rabbit Labs">
+        <defs><clipPath id="reveal"><rect id="reveal-r" x="0" y="0" width="1200" height="450"/></clipPath></defs>
+        <path class="arc" d="M110 300 Q600 -90 1090 300" clip-path="url(#reveal)"/>
+        <g id="dw"></g>
+        <g id="chart"></g>
+      </svg>
+      <div class="cap"><span class="mono" id="cap-n"></span><p id="cap-t"></p></div>
+      <p class="mono hint">Scroll to play the hop.</p>
+    </div>
+  </section>
+
+
+  <section class="wrap card">
+    <p class="mono">Why</p>
+    <p class="say">One second of animation is up to 24 drawings. <span>Almost every one is still drawn by hand.</span></p>
+  </section>
+
+  <section class="wrap card">
+    <div class="rows">
+      <div class="row"><b>1,875</b><p><strong>artist-hours</strong> to draw one 22-minute TV episode.</p></div>
+      <div class="row"><b>~½</b><p>of those hours go to the <strong>in-betweens</strong>, the drawings between the keys.</p></div>
+      <div class="row"><b>4 for 3</b><p>Our base case: give each animator 10 hours a week back and the same team makes <strong>four episodes in the time of three</strong>.</p></div>
+    </div>
+  </section>
+
+  <section class="wrap card" id="how">
+    <p class="mono">How it works</p>
+    <div class="cols">
+      <div><p class="mono">01</p><h3>Drop in keys</h3><p>Your key drawings as vector line art (SVG or Grease Pencil), with your exposure sheet. Holds and timing stay yours.</p></div>
+      <div><p class="mono">02</p><h3>Generate</h3><p>Our model matches each line between the keys and moves it along the motion, on the frames your timing calls for.</p></div>
+      <div><p class="mono">03</p><h3>Fix</h3><p>Point at a wrong line and pick a retake. Only that line is redrawn. Lock anything you've fixed by hand.</p></div>
+    </div>
+  </section>
+
+  <section class="wrap card">
+    <p class="mono">What stays yours</p>
+    <p class="say">Your timing. <span>Your lines.</span> Your building.</p>
+    <p class="small">We draw on the frames your sheet asks for. Output is vector, so nobody redraws a frame for a note. The model runs on your own machines, and your art is never used for training without your permission.</p>
+  </section>
+
+  <section class="wrap card" id="results">
+    <p class="mono">Measured, not promised</p>
+    <div class="rows">
+      <div class="row"><b>82%</b><p>of drafts pass our automatic check on <strong>3D-rendered characters the model has never seen</strong> (252 of 306).</p></div>
+      <div class="row"><b>&lt;1s</b><p>per in-between, <strong>on a laptop</strong>.</p></div>
+    </div>
+    <p class="small">Loose hand-drawn pencil is harder, and that's where we're improving fastest.</p>
+  </section>
+
+  <section class="wrap card" id="team">
+    <p class="mono">Team</p>
+    <div class="team">
+      <article><img src="../rabbitlab-site/assets/rithwick.webp" alt="Rithwick Sethi"><h3>Rithwick Sethi</h3><p class="role">Co-founder, CEO</p><ul><li>MS AI Engineering at CMU</li><li>Built AI and automation tooling at Apple</li><li>Published 7 research papers</li></ul></article>
+      <article><img src="../rabbitlab-site/assets/om.webp" alt="Om Kulkarni"><h3>Om Kulkarni</h3><p class="role">Co-founder, CTO</p><ul><li>MS ECE and ETIM at CMU</li><li>Worked on AI workloads at Arm</li><li>Built data pipelines at Wells Fargo</li></ul></article>
+      <article><img src="../rabbitlab-site/assets/hasita.webp" alt="Hasita Bommakanti"><h3>Hasita Bommakanti</h3><p class="role">Co-founder, COO</p><ul><li>MS ECE and ETIM at CMU</li><li>Built AI systems at Apple</li><li>Leads studio outreach</li></ul></article>
+    </div>
+  </section>
+
+  <section class="end">
+    <div class="wrap">
+      <p class="mono">Try it on one of your shots</p>
+      <a class="giant" href="mailto:founders@rabbitlab.ai?subject=Pilot">Send us two keys&nbsp;→</a>
+      <p>and a timing chart. We'll send back editable in-betweens.</p>
+      <div class="ctas"><a class="btn" href="https://calendly.com/founders-rabbitlab/1-1-founders" target="_blank" rel="noopener">Book a call</a><a class="tlink" href="mailto:founders@rabbitlab.ai">founders@rabbitlab.ai</a></div>
+    </div>
+  </section>
+</main>
+
+<footer class="wrap foot mono"><span>© 2026 Rabbit Labs · an animator's best friend · Pittsburgh, PA</span><a href="mailto:founders@rabbitlab.ai">founders@rabbitlab.ai</a></footer>
+
+<script src="shared/hop.js"></script>
+<script>
+const progress = (el) => { const r = el.getBoundingClientRect(), span = el.offsetHeight - innerHeight; return Math.max(0, Math.min(1, -r.top / span)); };
+const pad = (n) => String(n).padStart(2, "0");
+const CAPS = ["Your animator draws the crouch.", "We draw the way up.", "Your animator sets the top of the hop.", "We draw the way down.", "Your animator draws the landing."];
+// Each step of scroll shows the next drawing; earlier drawings stay as onion skin. The sixth step shows the whole hop.
+(() => {
+  const { drawings, render, chart } = window.Hop;
+  const sect = document.getElementById("piece"), stage = sect.querySelector(".stage");
+  const dw = document.getElementById("dw"), ch = document.getElementById("chart"), rr = document.getElementById("reveal-r");
+  const capN = document.getElementById("cap-n"), capT = document.getElementById("cap-t"), leadB = document.getElementById("lead-b");
+  dw.innerHTML = drawings.map((d) => `<g class="d ${d.kind}" transform="translate(${d.x} ${d.y})">${render(d.p)}</g>`).join("");
+  ch.innerHTML = chart(405);
+  const ds = [...dw.children], mks = [...ch.querySelectorAll(".mk")];
+  let cur = -1;
+  const set = (k) => {
+    if (k === cur) return;
+    cur = k;
+    const done = k >= drawings.length, d = drawings[Math.min(k, drawings.length - 1)];
+    stage.classList.toggle("done", done);
+    ds.forEach((g, i) => { g.classList.toggle("now", i === k); g.classList.toggle("past", i < k); });
+    mks.forEach((m, i) => m.classList.toggle("on", i <= k));
+    rr.setAttribute("width", done ? 1200 : d.x + 10);
+    capN.textContent = done ? "The whole hop" : `${pad(d.n)} · ${d.label}`;
+    capT.textContent = done ? "Three drawings from your animator. Two from us, on your timing." : CAPS[k];
+    leadB.style.opacity = k >= 1 ? 1 : 0.25;
+  };
+  const onScroll = () => set(Math.min(drawings.length, Math.floor(progress(sect) * (drawings.length + 1))));
+  addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
+})();
+</script>
+</body>
+</html>
